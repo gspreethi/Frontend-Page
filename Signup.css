@@ -1,0 +1,22 @@
+.reg{
+    font-style: italic;
+    text-align: center;
+    color: blue;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.form{
+    font-size: medium;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.signup{
+    background: url(C:\Users\926652\Downloads\EgiftProject\Egift\Egift-react\src\images\background.jpg)
+}
+
+.submit{
+    margin-top: 10px;
+
+}

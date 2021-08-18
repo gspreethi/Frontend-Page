@@ -1,0 +1,43 @@
+
+ .productCard > button{
+    background-color: #f0c14b;
+    border: 1px solid #a88734 #9c7e31 #846a29;
+    margin:auto;
+}
+
+.card{
+    height:450px;
+   margin:5px ;
+}
+
+.cardImage{
+    height:200px;
+    object-fit: contain;
+    margin-top:25px;
+    margin-bottom:15px;
+}
+
+.cardBody{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.cardTitle{
+    font-weight: 600;
+    margin:0px;
+}
+
+.cardAuthor{
+    color:blue;
+}
+
+.cardPrice{
+    font-weight: 600;
+}
+
+.cardButton{
+    background-color: #f0c14b;
+    border: 1px solid #a88734 #9c7e31 #846a29;
+}

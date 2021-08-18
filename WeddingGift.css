@@ -1,0 +1,16 @@
+
+
+.Weddinggift > h1{
+    margin:auto;
+    color:tomato;
+}
+.dropdownSelectDiv{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.dropdownSelect{
+    margin-left:5px;
+}

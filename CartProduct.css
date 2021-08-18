@@ -1,0 +1,46 @@
+
+.cardProduct__card{
+    height:450px;
+   margin:5px ;
+   display: flex;
+}
+
+.cardProduct__cardImage{
+    height:200px;
+    object-fit: contain;
+    margin-top:25px;
+    margin-bottom:15px;
+}
+
+.cardBody{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.cardTitle{
+    font-weight: 600;
+    margin:0px;
+}
+
+.cardAuthor{
+    color:blue;
+}
+
+.cardPrice{
+    font-weight: 600;
+}
+
+.cardImageDiv{
+    display:flex;
+}
+
+.cardBodyDiv{
+    display: flex;
+}
+
+.cardButton{
+    justify-content: flex-end;
+    align-items: flex-end;
+}

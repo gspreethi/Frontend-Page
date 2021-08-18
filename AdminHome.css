@@ -1,0 +1,17 @@
+.adminHome{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    align-items: center;
+}
+
+.adminHome__addAgift{
+    background: green;
+    border-radius: 12px;
+}
+
+.adminHome__deleteAgift{
+    background: red;
+    border-radius: 12px;
+}

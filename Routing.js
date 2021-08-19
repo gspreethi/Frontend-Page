@@ -24,65 +24,78 @@ const [{user}] = useStateValue();
     
     <BrowserRouter>
     <div >
-      <nav className="d-flex">
-      <ul className="nav bg-light justify-content-center" style={{marginLeft:'200px'}}>
-        <nav className="nav-item" style={{color:'brown'}}>
-        Register: <Link className="nav-link" to="/Registeration">Registration</Link>
-        </nav>
-        <nav className="nav-item "  style={{color:'brown'}}>
-         Already a user :  <Link className="nav-link" to="/UserLogin" >UserLogin</Link>
-        </nav>
-        <nav className="nav-item "  style={{color:'brown'}}>
-         <Link className="nav-link" to="/AdminLogin" >AdminLogin</Link>
-        </nav>
-
-        <nav className="nav-item "  style={{color:'brown'}}>
-         <Link className="nav-link" to="/PortalPage" >Portal To Contact</Link>
-        </nav>
-        
-        
-       
-      </ul>
-      </nav>
-      <IssuesNotification />
-
-      
      
-      <Switch>
-        <Route path="/Register" component={Register}>
-            <Register  />
-        </Route>
-        <Route path="/UserPortal" component={UserPortal}>
-         
-        </Route>
-        <Route path="/UserLogin" component={UserLogin}>
-          <UserLogin />
-        </Route>
-        <Route path="/AdminPage" component={AdminPage}>
-         
-        </Route>
-        <Route path="/AdminLogin" component={AdminLogin}>
-        <AdminLogin />
-        </Route>
+            <Switch>
+      <Route path="/cart">
+             <Header />
+            <Cart />
+            <Footer />
+          </Route>
+          <Route path="/Signin">
+          <Signin />
+          </Route>
+          
+          <Route path="/Registration">
+          <Registration/>
+          </Route>
+          
+          <Route path="/newreleases">
+            <Header />
+            <NewReleases/>
+            <Footer />
+          </Route>
+          <Route path="/mostPopularBooks">
+            <Header />
+            <MostPopularBooks />
 
-        <Route path="/PortalPage" component={PortalPage}>
-        <PortalPage />
-        </Route>
 
-        <Route path="/UserPage" component={UserPage}></Route>
-
-        <Route path="/HelpPage" component={HelpPage}></Route>
-        <Route path="/FeedbackForm" component={FeedbackForm}></Route>
-        <Route path="/SecurityQuestionForm" component={SecurityQuestionForm}></Route>
-        <Route path="/ForgotId" component={ForgotId}></Route>
-        <Route path="/ForgotPassword" component={ForgotPassword}></Route>
-        <Route path="/PasswordResetPage/:userId" component={PasswordResetPage}></Route>
-
+            <Footer />
+          </Route>
+          <Route path="/WeddingGift">
+            <Header />
+            <WeddingGift />
+            <Footer />
+          </Route>
+          <Route path="/checkout">
+            <Header />
+            <Checkout />
+            <Footer />
+          </Route>
+          <Route path="/Thankyou">
+            <Header />
+            <center><img src={ThankyouImage} alt="thankyouMessaage"/></center>
+          </Route>
+          <Route path='/bookAddedSuccessfully'>
+            <h1>Gift Added successfully</h1>
+          </Route>
+          <Route path="/deleteABook">
+          <Header />
+            <Deletegift />
+            <Footer />
+          </Route>
+          <Route path="/SearchResult/:name">
+            <Header />
+            <SearchResult />
+            <Footer />
+          </Route>
+          <Route path='/addABook'>
+            <Header />
+            <AddAgift/>
+            <Footer />
+          </Route>
+          <Route exact path="/">
+            <Header />
+            {(user===null)?(<div />): ((user.isAdmin===false)?(<AdminHome />):(<div />))}
+            <AdminHome />
+            <Carousel/>
+            <Home />
+            <Footer />
+          </Route>
+          
+        </Switch>
         
-
-      </Switch>
       </div>
-    </BrowserRouter>
+     </BrowserRouter>
         </div>
     )
  

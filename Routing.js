@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Registration from "./components/Registration";
-import Signin from './components/Signin'
+import Registration from "./Registration";
+import Signin from './Signin'
 import UserPage from "./UserPage";
 import UserPortal from './UserPortal';
 import UserLogin from './UserLogin';

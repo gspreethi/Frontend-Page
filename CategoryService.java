@@ -1,10 +1,8 @@
 package com.gift.api.service;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.gift.api.dao.CategoryRepo;
 import com.gifr.api.model.Category;
 

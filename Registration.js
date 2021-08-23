@@ -2,11 +2,11 @@ import React from 'react'
 import {useState} from 'react'
 import { useForm } from "react-hook-form";
 import PasswordRecovery from './ForgotIDPass/PasswordRecovery';
-import { useHistory } from "react-router-dom";
+//import { useHistory } from "react-router-dom";
 //import {useSelector,useDispatch} from "react-redux";
 //import LoginCreator from '../redux/LoginCreator';
 //import {bindActionCreators} from "redux";
-//import {BrowserRouter,useHistory,Link,Switch,Route} from "react-router-dom";
+import {useHistory,Link} from "react-router-dom";
 
 export default function Registration(){
   
@@ -25,8 +25,7 @@ export default function Registration(){
 
 const onPost = (data) => {
   // e.preventDefault();
-  alert("Registered successfully");
-  console.log(data);
+    console.log(data);
   //postUserInfo(data);
  // history.pushState('/Signin');
 
@@ -35,6 +34,17 @@ const onPost = (data) => {
   <strong>Success!</strong> Registered successfully
   </div>
 
+const [open, setOpen] = useState(true);
+
+const handleClickOpen = () => {
+  setOpen(true);
+};
+
+const handleClose = () => {
+  setOpen(false);
+};
+
+
   fetch('http://localhost:8080/user',{
             method:'POST',
             body:JSON.stringify(data),
@@ -42,18 +52,16 @@ const onPost = (data) => {
        })
         .then(res=>res.json())
         .then(json=>setData(json.data))
+        alert("Registered successfully");
+        history.push('/userlogin')
 };
-
-// const onClickHandler=()=>{
-
-// }
 
 return (
   <div className="container pt-5">
     <div className="row justify-content-sm-center pt-5">
       <div className="col-sm-6 shadow round pb-3">
         <h1 className="text-center pt-3 text-primary">Register here </h1>
-        <form>
+        <form  onSubmit={handleSubmit(onPost)}>
 
         <div className="form-group">
             <label className="col-form-label">User ID:</label>
@@ -122,21 +130,27 @@ return (
             <label className="col-form-label">Password:</label>
             <input type="password" className={`form-control ${errors.password && "invalid"}`}
               {...register("password", { required: "Password is Required" ,
-              pattern: {value: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/, message: "Requirement is not satisfied" }})}
+              pattern: {value: /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/, message: "Minimum 8 characters,letters, a number" }})}
              onKeyUp={() => {trigger("password"); }}/>
              {errors.password && (<small className="text-danger">{errors.password.message}</small>)}
           </div>
 
-          <button variant="outlined" color="primary" onClick={<PasswordRecovery open={true} />}>
+          <div style={{textAlign:'center'}} >
+          <button type="button"  onClick={()=>setButtonPopup(true)} required >Security Questions</button>       
+          
+        </div>
+<div>
+          <button style={{textAlign:'center'}} variant="outlined" onClick={()=>setButtonPopup(true)} required>
         Password Recovery Questions
           </button><br/>
-
+          <SecurityQuestionForm trigger={buttonPopup} setTrigger={setButtonPopup}/>
+          </div>
           {/* <nav className="nav-item "  style={{color:'gray'}}>
          <Link className="nav-link" to="/PasswordRecovery" >Password Recovery Questions</Link>
         </nav> */}
 
 
-          <button type="submit" className="btn btn-primary my-3" onSubmit={handleSubmit(onPost)}> Submit </button>   
+          <button type="submit" className="btn btn-primary my-3"> Submit </button>   
         </form>
       </div>
     </div>

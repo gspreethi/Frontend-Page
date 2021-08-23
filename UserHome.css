@@ -1,0 +1,17 @@
+.UserHome{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    align-items: center;
+}
+
+.UserHome__addAgift{
+    background: green;
+    border-radius: 12px;
+}
+
+.UserHome__deleteAgift{
+    background: red;
+    border-radius: 12px;
+}

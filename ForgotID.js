@@ -6,9 +6,9 @@ export default function ForgotId() {
     const[responses,setResponses]=useState({})
     const [data,setData]=useState({
         "contact":"",
-        "secretAns1":"",
-        "secretAns2":"",
-        "secretAns3":""
+        "securityAns1":"",
+        "securityAns2":"",
+        "securityAns3":""
     })
 
     const handleValidation=(e)=>{

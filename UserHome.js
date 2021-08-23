@@ -8,7 +8,7 @@ function UserHome() {
     let history= useHistory();
     
     return (
-        <div className="userHome">
+        <div className="UserHome">
         <carousal/>
         </div>
         <div>

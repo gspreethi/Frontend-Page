@@ -13,7 +13,7 @@ function UserHome() {
         </div>
         <div>
         <h1>Browse to select the gift to ur loved ones</h1>
-            <Button className="adminHome__addAgift" onClick={()=>{history.push('/addABook')}}> Browse</Button>
+            <Button className="UserHome__addAgift" onClick={()=>{history.push('/addABook')}}> Browse</Button>
         </div>
     )
 }

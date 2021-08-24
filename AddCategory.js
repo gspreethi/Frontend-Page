@@ -96,7 +96,7 @@ export default function AddCategory() {
           </select>
        </div>
 
-        <button type="submit" className="btn btn-success">Add</button>
+        <button type="submit" className="btn btn-success">Add Category</button>
      </form>
         </div>
         </div>

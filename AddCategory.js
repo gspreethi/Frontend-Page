@@ -1,120 +1,106 @@
 import React,{useEffect, useState} from 'react'
 
-import axios from 'axios'
+//import axios from 'axios'
 
-export default function SortByAdmin() {
+export default function AddCategory() {
 
     const [categories,setCategories]=useState([])
-    const [sorting,setSorting]=useState({
-        "catTd":"",
+    const [cat,setCat]=useState({
+        "catId":"", 
         "categoryName":"",
-        "type":""
+        "item":""
     });
 
     const [options,setOptions]=useState([]);
-
-    
 
     const BirthdayGifts=['select','Chocolates','Frames','flower-bouquet','Books','Personalized LED Rotating Crystal','Hampers','Cakes','Home Decor Items'];
     const AnniversaryGifts=['select','Couple T-Shirts','Cakes','Accessories','Photo-Canvas','Chocoaltes','Hampers'];
     const Raakhi=['select','Sweets','Chocolates','Accessories','Raakhi','Hampers'];
     const Friends=['select','Printed T-shirts','Cakes','Chocolates','Hampers','Customized gifts'];
-
-    
-        
+       
             useEffect(()=>{
 
-            if(sorting.category === "BirthdayGifts")
+            if(cat.categoryName === "BirthdayGifts")
             {
                 setOptions(BirthdayGifts)
                 //console.log("sort",sorting.category);
             }
-            else if(sorting.category === "AnniversaryGifts")
+            else if(cat.categoryName === "AnniversaryGifts")
             {
                 setOptions(AnniversaryGifts)
             }
-            else if(sorting.category === "Raakhi")
+            else if(cat.categoryName === "Raakhi")
             {
                 setOptions(Raakhi)
             }
-             
             else{
                 setOptions(Friends)
             }
-    
-    
-        },[sorting])
+     },[cat])
 
-        const addCategory=(e)=>{
-    
+        const addcat=(e)=>{
             e.preventDefault();
-                       
-
-                    fetch('http://localhost:8080/setSorting',{
+                    fetch('http://localhost:8080/setCat',{
                         method:'POST',
-                        body:JSON.stringify(sorting),
+                        body:JSON.stringify(cat),
                         headers:{'Content-Type':'application/json'},
                
                             })
            
                        .then(response=>response.json())
                        .then(res=>{
-                           setSorting(res)
+                           setCat(res)
                           
-                           alert("Added categories");
+                           alert("Added category");
                       })
-                      console.log(sorting);
-                      
-                }
+                      console.log(cat);
+             }
        
        return (
         <div>
-            <h1>Add category</h1>
-            <form onSubmit={addCategory} >
+        <div className="container pt-5">
+      <div className="row justify-content-sm-center pt-5">
+        <div className="col-sm-6 shadow round pb-3">
+          <h1 className="text-center pt-3 text-primary">Add Category</h1>
+            <form onSubmit={addcat}>
             
-        <div className="mb-3">
+        <div className="form-group">
           <label htmlFor="catId" className="form-label">Category ID</label>
-          <input type="text" className="form-control" id="catId" 
-          name="catId"onChange={(e)=>{setSorting({...sorting,catId:e.target.value})}}/>
-          
-        </div>
-        <div className="mb-3">
+          <input type="number" className="form-control" id="catId" 
+          name="catId" onChange={(e)=>{setCat({...cat,catId:e.target.value})}}/>
+    </div>
+
+        <div className="form-group">
           <label htmlFor="categoryname" className="form-label">Category Name</label>
-          <select
-          id="categoryname" onChange={(e)=>{setSorting({...sorting,categoryName:e.target.value})}}>
+          <select className="form-control"
+          id="categoryname" onChange={(e)=>{setCat({...cat,categoryName:e.target.value})}}>
              <option>select category</option>
              <option value="Birthday">Birthday</option>
              <option value="Anniversary">Anniversary</option>
              <option value="Raakhi">Raakhi</option>
              <option value="For Friends">For Friends</option>
           </select>
-          
-        </div>
-        <div className="mb-3">
-          <label htmlFor="type" className="form-label">Type</label>
-          <select id="type" 
-          onChange={(e)=>{setSorting({...sorting,type:e.target.value})}}>
-              
-              {
+       </div>
+
+        <div className="form-group">
+          <label htmlFor="Item" className="form-label">Item</label>
+          <select id="item" className="form-control"
+          onChange={(e)=>{setCat({...cat,item:e.target.value})}}>
+               {
                   options.map((op,ind)=>{
                       return(
-                          
                           <option value={op} key={ind}>{op}</option>
                       )
                   })
-                 
-                  
-              }
+               }
           </select>
-          
-        </div>
+       </div>
 
-        
-      
-        <button type="submit" className="btn btn-success">Submit</button>
-         
-        
-      </form>
+        <button type="submit" className="btn btn-success">Add</button>
+     </form>
+        </div>
+        </div>
+        </div>
         </div>
     )
 }

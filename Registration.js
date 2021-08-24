@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 import { useForm } from "react-hook-form";
-import PasswordRecovery from './ForgotIDPass/PasswordRecovery';
+import PasswordRecovery from './PasswordRecovery';
 //import { useHistory } from "react-router-dom";
 //import {useSelector,useDispatch} from "react-redux";
 //import LoginCreator from '../redux/LoginCreator';
@@ -145,6 +145,7 @@ return (
           </button><br/>
           <SecurityQuestionForm trigger={buttonPopup} setTrigger={setButtonPopup}/>
           </div>
+          
           {/* <nav className="nav-item "  style={{color:'gray'}}>
          <Link className="nav-link" to="/PasswordRecovery" >Password Recovery Questions</Link>
         </nav> */}

@@ -1,7 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 import { useForm } from "react-hook-form";
-import PasswordRecovery from './PasswordRecovery';
+import PasswordRecovery from './ForgotIDPass/PasswordRecovery';
 //import { useHistory } from "react-router-dom";
 //import {useSelector,useDispatch} from "react-redux";
 //import LoginCreator from '../redux/LoginCreator';
@@ -11,6 +11,7 @@ import {useHistory,Link} from "react-router-dom";
 export default function Registration(){
   
   const history = useHistory();
+   const [Popup,setPopup]=useState(false);
   const [data,setData]=useState({
     firstName:'' ,
     lastName:'',
@@ -23,38 +24,22 @@ export default function Registration(){
        })
   const {register,handleSubmit,formState: { errors },reset,trigger} = useForm();
 
-const onPost = (data) => {
-  // e.preventDefault();
+const onPost = (e) => {
+  e.preventDefault();
     console.log(data);
   //postUserInfo(data);
  // history.pushState('/Signin');
+ fetch('http://localhost:8080/user',{
+  method:'POST',
+  body:JSON.stringify(data),
+  headers:{'Content-Type':'application/json'},
+})
+.then(res=>res.json())
+.then(json=>setData(json.data))
+alert("Registered successfully");
+history.push('/userlogin')
+}
 
-  <div class="alert success">
-  <span class="closebtn" style={{}}>&times;</span>  
-  <strong>Success!</strong> Registered successfully
-  </div>
-
-const [open, setOpen] = useState(true);
-
-const handleClickOpen = () => {
-  setOpen(true);
-};
-
-const handleClose = () => {
-  setOpen(false);
-};
-
-
-  fetch('http://localhost:8080/user',{
-            method:'POST',
-            body:JSON.stringify(data),
-            headers:{'Content-Type':'application/json'},
-       })
-        .then(res=>res.json())
-        .then(json=>setData(json.data))
-        alert("Registered successfully");
-        history.push('/userlogin')
-};
 
 return (
   <div className="container pt-5">
@@ -136,15 +121,9 @@ return (
           </div>
 
           <div style={{textAlign:'center'}} >
-          <button type="button"  onClick={()=>setButtonPopup(true)} required >Security Questions</button>       
-          
+          <button type="button"  onClick={()=>setPopup(true)} required >Password Recovery Questions</button>       
+          <PasswordRecovery trigger={Popup} setTrigger={setPopup}/>
         </div>
-<div>
-          <button style={{textAlign:'center'}} variant="outlined" onClick={()=>setButtonPopup(true)} required>
-        Password Recovery Questions
-          </button><br/>
-          <SecurityQuestionForm trigger={buttonPopup} setTrigger={setButtonPopup}/>
-          </div>
           
           {/* <nav className="nav-item "  style={{color:'gray'}}>
          <Link className="nav-link" to="/PasswordRecovery" >Password Recovery Questions</Link>

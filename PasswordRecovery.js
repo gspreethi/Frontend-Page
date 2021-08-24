@@ -1,15 +1,8 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import {useHistory} from 'react-router-dom';
 import {useState} from 'react'
 
-export default function FormDialog(props) {
+export default function PasswordRecovery(props) {
   let setTrigger=props.setTrigger;
 
   let history=useHistory();
@@ -43,17 +36,15 @@ export default function FormDialog(props) {
         <form onSubmit={handleSubmit}
       style={{border:'1px solid blue',"padding":3,"width":500,"paddingLeft":30,fontFamily:'sans-serif',color:'GrayText',alignItems:"center"}} >
 
-      <button className="close-btn" onClick={()=>setTrigger(false)} style={{color:'white',borderRadius:'100px',backgroundColor:'red'}}>X</button>
-              {props.children}
-        <div className="form-group">
+      
+              <div className="form-group">
         <label htmlFor="question1" className="form-label">Question 1</label>
                   <p id="question1">What is your first School Name?</p>
               </div> 
 
 
       <div className="form-group">
-        <label htmlFor="answer1" className="form-label">Answer</label>
-        <input type="text" className="form-control"  id="answer1" 
+              <input type="text" className="form-control"  id="answer1" 
         aria-describedby="answer1" name="answer1" 
         onChange={(e)=>{setData({...data,securityAns1:e.target.value})}} required />
             </div>
@@ -64,8 +55,7 @@ export default function FormDialog(props) {
          </div> 
 
       <div className="mb-3">
-        <label htmlFor="answer2" className="form-label">Answer</label>
-        <input type="text" className="form-control"  id="answer2" 
+           <input type="text" className="form-control"  id="answer2" 
         aria-describedby="answer2" name="answer2" 
         onChange={(e)=>{setData({...data,securityAns2:e.target.value})}} required />
             </div>
@@ -76,13 +66,14 @@ export default function FormDialog(props) {
       </div> 
         
       <div className="form-group">
-        <label htmlFor="answer3" className="form-label">Answer</label>
-        <input type="text" className="form-control"  id="answer3" 
+           <input type="text" className="form-control"  id="answer3" 
         aria-describedby="answer3" name="answer3" 
         onChange={(e)=>{setData({...data,securityAns3:e.target.value})}} required />
       </div>
 
-      <button type="submit" className="btn btn-primary">Submit</button>
+      <button className="btn btn-danger" onClick={()=>setTrigger(false)} style={{textAlign:"right"}}> Back</button>
+      <button type="submit" className="btn btn-primary">Submit </button>
+
            </form>
       </div>
 </div>

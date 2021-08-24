@@ -16,7 +16,7 @@ function LoginPage() {
     const [{}, dispatch] = useStateValue();
 
     let history=useHistory();
-    const [id, setId] = useState('');
+    const [userId, setUserId] = useState('');
     const [userData, setUserData]=useState();
     const [userDataSuccess, setUserDataSuccess] = useState(false);
     const [ password, setPassword] = useState('');
@@ -25,7 +25,7 @@ function LoginPage() {
     useEffect(()=>{
         const fetchdata = async() => {
             const result = await axios(
-              `http://localhost:8081/api/getuser/${id}`,
+              `http://localhost:8080/user/${userId}/${password}`,
             );
          
             setUserData(result.data);
@@ -39,16 +39,17 @@ function LoginPage() {
     const handleLogin = () =>{
         setLoginState(true)
         if(userDataSuccess===true){
-            if( id===userData.user.userId ){
+            if( userId===userData.user.userId ){
                 if(password===userData.user.userPassword){
                     
                     dispatch({
                         type:'SET_USER',
                         user: userData.user
                     })
-                    history.push('/')
+                     alert("Login successful")
+                        history.push("/UserHome")
                 }else{
-                    console.warn("incorrect password");
+                    console.warn("Login is not successful");
                 }
             }
         }
